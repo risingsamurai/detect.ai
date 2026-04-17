@@ -1,0 +1,11 @@
+applicant_id,gender,race,age,education,years_experience,interview_score,hired
+1,Male,White,32,Bachelors,5,85,1
+2,Female,Asian,28,Masters,3,88,0
+3,Male,Black,45,Bachelors,15,76,1
+4,Female,White,24,Bachelors,1,92,1
+5,Male,Hispanic,35,Masters,8,81,0
+6,Female,Black,29,PhD,2,95,0
+7,Male,Asian,41,Masters,12,79,1
+8,Female,Hispanic,33,Bachelors,6,84,0
+9,Male,White,27,Bachelors,2,75,1
+10,Female,White,38,Masters,10,89,1
