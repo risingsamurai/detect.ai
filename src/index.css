@@ -23,7 +23,7 @@
 /* Custom utilities */
 @layer utilities {
   .glass {
-    @apply bg-[var(--color-surface)] bg-opacity-70 backdrop-blur-md border border-[var(--color-border)];
+    @apply bg-[#12121A]/70 backdrop-blur-md border border-[var(--color-border)];
   }
   
   .glow-primary {

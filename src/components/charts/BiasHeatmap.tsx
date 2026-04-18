@@ -25,15 +25,15 @@ export function BiasHeatmap({ metrics }: BiasHeatmapProps) {
   const getSeverityColor = (key: keyof AttributeMetrics, value: number) => {
     // Basic severity thresholds (simplified for demo)
     if (key === 'disparateImpact') {
-      if (value < 0.8) return 'bg-[#FF4D6D]'; // Red (EEOC 4/5ths rule)
-      if (value < 0.9) return 'bg-[#FFB740]'; // Yellow
-      return 'bg-[#22C55E]'; // Green
+      if (value < 0.8) return 'bg-[#FF4D6D]/80 hover:bg-[#FF4D6D]'; // Red (EEOC 4/5ths rule)
+      if (value < 0.9) return 'bg-[#FFB740]/80 hover:bg-[#FFB740]'; // Yellow
+      return 'bg-[#22C55E]/80 hover:bg-[#22C55E]'; // Green
     } else {
       // Differences (ideal is 0)
       const absValue = Math.abs(value);
-      if (absValue > 0.15) return 'bg-[#FF4D6D]';
-      if (absValue > 0.05) return 'bg-[#FFB740]';
-      return 'bg-[#22C55E]';
+      if (absValue > 0.15) return 'bg-[#FF4D6D]/80 hover:bg-[#FF4D6D]';
+      if (absValue > 0.05) return 'bg-[#FFB740]/80 hover:bg-[#FFB740]';
+      return 'bg-[#22C55E]/80 hover:bg-[#22C55E]';
     }
   };
 
@@ -59,7 +59,7 @@ export function BiasHeatmap({ metrics }: BiasHeatmapProps) {
               return (
                 <div 
                   key={`${attr}-${key}`} 
-                  className={`h-12 rounded-md ${colorClass} flex items-center justify-center bg-opacity-80 hover:bg-opacity-100 transition-all cursor-help group relative`}
+                  className={`h-12 rounded-md ${colorClass} flex items-center justify-center transition-all cursor-help group relative`}
                 >
                   <span className="text-white font-medium text-sm drop-shadow-md">
                     {val.toFixed(3)}
