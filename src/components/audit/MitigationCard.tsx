@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Recommendation } from '../../types';
-import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
 import { CheckCircle2, ChevronRight, Zap } from 'lucide-react';
 import toast from 'react-hot-toast';

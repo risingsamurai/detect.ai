@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { ArrowLeft, Download, Share2, Sparkles, AlertTriangle } from 'lucide-react';
 import { useAuditStore } from '../store/auditStore';
 import { Button } from '../components/ui/Button';

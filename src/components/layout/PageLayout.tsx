@@ -1,10 +1,10 @@
-import { Outlet, Navigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import TopBar from './TopBar';
 import { useAuthStore } from '../../store/authStore';
 
 export default function PageLayout() {
-  const { user, isLoading } = useAuthStore();
+  const { isLoading } = useAuthStore();
 
   if (isLoading) {
     return (

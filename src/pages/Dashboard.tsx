@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Plus, Database, AlertTriangle, CheckCircle2, TrendingUp } from 'lucide-react';
+import { Plus, Database, AlertTriangle, CheckCircle2, TrendingUp, ChevronRight } from 'lucide-react';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';

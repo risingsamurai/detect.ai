@@ -38,7 +38,7 @@ export function DistributionChart({ attribute, data }: DistributionChartProps) {
           <ReferenceLine y={avgRate} stroke="#6C47FF" strokeDasharray="3 3" opacity={0.5} />
           
           <Bar dataKey="rate" radius={[4, 4, 0, 0]} maxBarSize={60}>
-            {data.map((entry, index) => (
+            {data.map((_, index) => (
               <Cell key={`cell-${index}`} fill={index === 0 ? '#6C47FF' : '#00C2A8'} />
             ))}
           </Bar>

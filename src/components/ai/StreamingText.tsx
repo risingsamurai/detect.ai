@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 export function StreamingText({ text, speed = 20 }: { text: string; speed?: number }) {

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, Sparkles, Bot, User } from 'lucide-react';
+import { Send, Bot, User } from 'lucide-react';
 import { useGemini } from '../../hooks/useGemini';
 import { chatSystemInstruction } from '../../services/gemini';
 import { ChatMessage } from '../../types';

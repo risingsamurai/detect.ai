@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { UploadCloud, FileType2, Play, Settings2, CheckCircle2, AlertCircle } from 'lucide-react';
+import { UploadCloud, FileType2, Settings2, CheckCircle2, AlertCircle } from 'lucide-react';
 import Papa from 'papaparse';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
@@ -15,7 +15,7 @@ export default function NewAudit() {
   const { addAudit } = useAuditStore();
 
   const [step, setStep] = useState(1);
-  const [file, setFile] = useState<File | null>(null);
+  const [, setFile] = useState<File | null>(null);
   const [columns, setColumns] = useState<string[]>([]);
   const [previewData, setPreviewData] = useState<any[]>([]);
 

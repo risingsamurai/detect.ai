@@ -12,7 +12,7 @@ const navItems = [
 ];
 
 export default function Sidebar() {
-  const { user } = useAuthStore();
+  useAuthStore();
 
   return (
     <aside className="w-64 h-screen bg-[#12121A] border-r border-white/5 flex flex-col fixed left-0 top-0">
