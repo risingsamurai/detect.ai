@@ -8,16 +8,17 @@ import { Button } from '../components/ui/Button';
 import { Input } from '../components/ui/Input';
 import { useAuditStore } from '../store/auditStore';
 import toast from 'react-hot-toast';
+import { AnimatePresence } from "framer-motion";
 
 export default function NewAudit() {
   const navigate = useNavigate();
   const { addAudit } = useAuditStore();
-  
+
   const [step, setStep] = useState(1);
   const [file, setFile] = useState<File | null>(null);
   const [columns, setColumns] = useState<string[]>([]);
   const [previewData, setPreviewData] = useState<any[]>([]);
-  
+
   const [datasetName, setDatasetName] = useState('');
   const [targetColumn, setTargetColumn] = useState('');
   const [favorableOutcome, setFavorableOutcome] = useState('');
@@ -50,7 +51,7 @@ export default function NewAudit() {
   }, []);
 
   const handleToggleProtected = (col: string) => {
-    setProtectedAttrs(prev => 
+    setProtectedAttrs(prev =>
       prev.includes(col) ? prev.filter(c => c !== col) : [...prev, col]
     );
   };
@@ -62,7 +63,7 @@ export default function NewAudit() {
     }
 
     setIsAnalyzing(true);
-    
+
     // Simulate analysis delay
     await new Promise(resolve => setTimeout(resolve, 2500));
 
@@ -124,11 +125,10 @@ export default function NewAudit() {
           { id: 3, label: 'Analyze' }
         ].map((s) => (
           <div key={s.id} className="flex flex-col items-center gap-2 bg-[#0A0A0F] px-4">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-colors ${
-              step >= s.id 
-                ? 'bg-[#6C47FF] text-white shadow-[0_0_15px_rgba(108,71,255,0.5)]' 
-                : 'bg-[#12121A] text-gray-500 border border-white/10'
-            }`}>
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-colors ${step >= s.id
+              ? 'bg-[#6C47FF] text-white shadow-[0_0_15px_rgba(108,71,255,0.5)]'
+              : 'bg-[#12121A] text-gray-500 border border-white/10'
+              }`}>
               {step > s.id ? <CheckCircle2 className="w-5 h-5" /> : s.id}
             </div>
             <span className={`text-sm ${step >= s.id ? 'text-white' : 'text-gray-500'}`}>{s.label}</span>
@@ -152,7 +152,7 @@ export default function NewAudit() {
               <p className="text-gray-400 mb-8 max-w-md mx-auto">
                 Upload a CSV or JSON file containing your features and target variables. Max size 50MB for the free tier.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <div className="relative">
                   <input
@@ -187,9 +187,9 @@ export default function NewAudit() {
                     <h3 className="text-lg font-semibold flex items-center gap-2 mb-4">
                       <Settings2 className="w-5 h-5 text-[#6C47FF]" /> Configuration
                     </h3>
-                    <Input 
-                      label="Dataset Name" 
-                      value={datasetName} 
+                    <Input
+                      label="Dataset Name"
+                      value={datasetName}
                       onChange={(e) => setDatasetName(e.target.value)}
                     />
                   </div>
@@ -198,7 +198,7 @@ export default function NewAudit() {
                     <label className="block text-sm font-medium text-gray-300 mb-2">
                       Target Variable <span className="text-[#FF4D6D]">*</span>
                     </label>
-                    <select 
+                    <select
                       className="w-full bg-[#12121A] border border-white/10 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-[#6C47FF] focus:ring-1 focus:ring-[#6C47FF]"
                       value={targetColumn}
                       onChange={(e) => setTargetColumn(e.target.value)}
@@ -210,8 +210,8 @@ export default function NewAudit() {
                   </div>
 
                   <div>
-                    <Input 
-                      label="Favorable Outcome Value *" 
+                    <Input
+                      label="Favorable Outcome Value *"
                       placeholder="e.g., 1, 'Yes', 'Approved'"
                       value={favorableOutcome}
                       onChange={(e) => setFavorableOutcome(e.target.value)}
@@ -226,16 +226,15 @@ export default function NewAudit() {
                     <AlertCircle className="w-5 h-5 text-[#FFB740]" /> Protected Attributes
                   </h3>
                   <p className="text-sm text-gray-400 mb-4">Select the demographic columns to check for bias against.</p>
-                  
+
                   <div className="space-y-2 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
                     {columns.map(col => (
-                      <label key={col} className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${
-                        protectedAttrs.includes(col) 
-                          ? 'border-[#6C47FF] bg-[#6C47FF]/10' 
-                          : 'border-white/5 hover:border-white/20 bg-[#12121A]'
-                      }`}>
-                        <input 
-                          type="checkbox" 
+                      <label key={col} className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${protectedAttrs.includes(col)
+                        ? 'border-[#6C47FF] bg-[#6C47FF]/10'
+                        : 'border-white/5 hover:border-white/20 bg-[#12121A]'
+                        }`}>
+                        <input
+                          type="checkbox"
                           className="w-4 h-4 rounded border-gray-600 text-[#6C47FF] focus:ring-[#6C47FF] focus:ring-offset-[#12121A] bg-[#12121A]"
                           checked={protectedAttrs.includes(col)}
                           onChange={() => handleToggleProtected(col)}
@@ -278,8 +277,8 @@ export default function NewAudit() {
 
             <div className="flex justify-between pt-4">
               <Button variant="ghost" onClick={() => setStep(1)}>Back</Button>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 onClick={handleStartAnalysis}
                 isLoading={isAnalyzing}
                 disabled={!targetColumn || !favorableOutcome || protectedAttrs.length === 0}
